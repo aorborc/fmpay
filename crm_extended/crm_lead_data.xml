@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+        <!-- Crm stages -->
+        <record model="crm.case.stage" id="stage_lead_assign2">
+            <field name="name">Assign</field>
+            <field name="case_default">1</field>
+            <field name="probability">0</field>
+            <field name="on_change">1</field>
+            <field name="sequence">2</field>
+            <field name="type">both</field>
+        </record>
+    </data>
+</openerp>

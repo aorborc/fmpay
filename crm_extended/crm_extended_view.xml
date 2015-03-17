@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+          <record id="crm_case_form_view_leads_extended_form" model="ir.ui.view">
+             <field name="name">crm.leads.extended.form</field>
+             <field name="model">crm.lead</field>
+             <field name="inherit_id" ref="crm.crm_case_form_view_leads" /> 
+             <field name="arch" type="xml">
+                   <xpath expr="//form/header/button[@string='Convert to Opportunity']" position="after">
+                       <button name="cancel_leads" string="Cancel Leads" type="object"
+                            class="oe_highlight" attrs="{'invisible': [('stage_id', '=', 1)]}"/>
+                       <button name="assign_leads" string="Assign Leads" type="object"
+                            class="oe_highlight" attrs="{'invisible': [('stage_id', '!=', 1)]}"/>
+                   </xpath>
+                   
+                   <xpath expr="//form/sheet/group/group//field[@name='partner_name']" position="before">
+                        <field name="leads_category" on_change="onselect_users(leads_category)"/> 
+            	   </xpath>
+            	   <xpath expr="//form/sheet/notebook/page[@string='Internal Notes']" position="after">
+            	   <page string="Leads Reason">
+                        <field name="leads_reason"/>
+                   </page>
+                   </xpath>
+             </field> 
+         </record>  
+        <!-- CRM Leads Category Form View -->
+        <record model="ir.ui.view" id="crm_leads_category_form">
+        <field name="name">crm.leads.category.form</field>
+        <field name="model">crm.leads.category</field>
+        <field name="arch" type="xml">
+            <form string="CRM Leads Form">
+                <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+        </record>
+        <!-- CRM Leads Category Tree View -->
+        <record model="ir.ui.view" id="crm_leads_category_tree">
+            <field name="name">crm.leads.category.tree</field>
+            <field name="model">crm.leads.category</field>
+            <field name="arch" type="xml">
+                <tree string="Crm Leads Category">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!-- CRM Leads Category Action -->
+        <record id="action_crm_category_leads" model="ir.actions.act_window">
+            <field name="name">Pool Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.leads.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+        
+        <menuitem action="action_crm_category_leads" id="menu_crm_leads_category" parent="base.menu_sales"/>
+        
+      </data>
+</openerp>

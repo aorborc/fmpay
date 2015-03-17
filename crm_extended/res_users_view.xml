@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_users_form_extended_users" model="ir.ui.view">
+             <field name="name">users.form.extended.users</field>
+             <field name="model">res.users</field>
+             <field name="inherit_id" ref="base.view_users_form" /> 
+             <field name="arch" type="xml">
+                   <xpath expr="//form/sheet/div/group//field[@name='active']" position="after">
+                        <field name="leads_category"/>   
+                   </xpath>  
+             </field> 
+         </record>  
+         
+<!--         CRM Leads Category Form View
+        <record model="ir.ui.view" id="res_users_extended_form">
+        <field name="name">res.users.extended.form</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form string="SC Supervisor">
+                <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name='leads_category'/>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+        </record>
+        CRM Leads Category Tree View
+        <record model="ir.ui.view" id="res_users_extended_tree">
+            <field name="name">res.users.extended.tree</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <tree string="SC Supervisor">
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name='leads_category'/>
+                </tree>
+            </field>
+        </record>
+        Res Users New Action
+        <record id="action_res_users_extended" model="ir.actions.act_window">
+            <field name="name">SC Supervisor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.users</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+        
+        
+        <record id="action_res_users_extended_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="action_res_users_extended"/>
+        </record>
+
+        <record id="action_res_users_extended_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="res_users_extended_form"/>
+            <field name="act_window_id" ref="action_res_users_extended"/>
+        </record> -->
+        
+        
+        <menuitem action="base.action_res_users" id="menu_res_users_extended" name="SC Supervisor" parent="base.menu_sales"/>
+         
+      
+      </data>
+</openerp>
