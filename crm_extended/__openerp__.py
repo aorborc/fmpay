@@ -37,7 +37,6 @@ CRM Extended.
              'res_users_view.xml',
     ],
     'installable': True,
-    'application': True,
     'auto_install': False,
 }
 
